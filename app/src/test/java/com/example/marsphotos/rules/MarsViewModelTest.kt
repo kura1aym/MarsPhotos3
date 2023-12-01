@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.marsphotos
+package com.example.marsphotos.rules
 
 import com.example.marsphotos.fake.FakeDataSource
 import com.example.marsphotos.fake.FakeNetworkMarsPhotosRepository
-import com.example.marsphotos.rules.TestDispatcherRule
 import com.example.marsphotos.ui.screens.MarsUiState
 import com.example.marsphotos.ui.screens.MarsViewModel
 import kotlinx.coroutines.test.runTest
@@ -37,8 +36,7 @@ class MarsViewModelTest {
                 marsPhotosRepository = FakeNetworkMarsPhotosRepository()
             )
             assertEquals(
-                MarsUiState.Success("Success: ${FakeDataSource.photosList.size} Mars " +
-                        "photos retrieved"),
+                MarsUiState.Success(FakeDataSource.photosList),
                 marsViewModel.marsUiState
             )
         }
